@@ -1,0 +1,85 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-02-18 11:39:57.221327",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "acceptable_works_period",
+  "contract_type",
+  "based_on",
+  "full_period_formula",
+  "specified_period_section",
+  "for_firstyear",
+  "specified_period_formula"
+ ],
+ "fields": [
+  {
+   "depends_on": "eval:doc.based_on==\"Full Period With Specified Period\"",
+   "fieldname": "for_firstyear",
+   "fieldtype": "Int",
+   "label": "For First(Year)",
+   "mandatory_depends_on": "eval:doc.based_on==\"Full Period With Specified Period\""
+  },
+  {
+   "fieldname": "acceptable_works_period",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Acceptable Works Period(Years)",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "contract_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Contract Type",
+   "options": "Fixed term\nIndefinite"
+  },
+  {
+   "description": "<ol>\n<li>Use field <code>base</code> for using base salary of the Employee</li>\n<li>Use field <code>work_years</code> for using Number of years of work</li>\n<h5>Examples</h5>\n<pre><code>Formula: salary * 1</code></pre>\n<pre><code>Formula: (salary / 2) * work_years</code></pre>\n\n</ol>",
+   "fieldname": "full_period_formula",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Full Period Formula",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.based_on==\"Full Period With Specified Period\"",
+   "description": "<ol>\n<li>Use field <code>base</code> for using base salary of the Employee</li>\n<li>Use field <code>work_years</code> for using Number of years of work</li>\n<h5>Examples</h5>\n<pre><code>Formula: salary * 1</code></pre>\n<pre><code>Formula: (salary / 2) * work_years</code></pre>\n\n</ol>",
+   "fieldname": "specified_period_formula",
+   "fieldtype": "Small Text",
+   "label": "Specified Period Formula",
+   "mandatory_depends_on": "eval:doc.based_on==\"Full Period With Specified Period\""
+  },
+  {
+   "depends_on": "eval:doc.based_on==\"Full Period With Specified Period\"",
+   "fieldname": "specified_period_section",
+   "fieldtype": "Section Break",
+   "label": "Specified Period"
+  },
+  {
+   "fieldname": "based_on",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Based On",
+   "options": "Full Period\nFull Period With Specified Period"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-02-19 02:02:06.739356",
+ "modified_by": "Administrator",
+ "module": "endserviceapp",
+ "name": "End Of Service Setting Terms",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

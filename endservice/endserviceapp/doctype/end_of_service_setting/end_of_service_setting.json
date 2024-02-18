@@ -1,0 +1,107 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:title",
+ "creation": "2024-02-18 11:34:30.018510",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "column_break_v0p9x",
+  "end_of_service_type",
+  "setting_section",
+  "terms",
+  "example",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_v0p9x",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "End Of Service Setting",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "depends_on": "eval:doc.end_of_service_type==\"With Reward\"",
+   "fieldname": "setting_section",
+   "fieldtype": "Section Break",
+   "label": "Setting"
+  },
+  {
+   "depends_on": "eval:doc.end_of_service_type==\"With Reward\"",
+   "fieldname": "terms",
+   "fieldtype": "Table",
+   "label": "Terms",
+   "mandatory_depends_on": "eval:doc.end_of_service_type==\"With Reward\"",
+   "options": "End Of Service Setting Terms"
+  },
+  {
+   "depends_on": "eval:doc.end_of_service_type==\"With Reward\"",
+   "fieldname": "example",
+   "fieldtype": "HTML",
+   "options": "<ol>\n<li>Use field <code>salary</code> for using base salary of the Employee</li>\n<li>Use field <code>work_years</code> for using Number of years of work</li>\n<h5>Examples</h5>\n<pre><code>Formula: salary * 1</code></pre>\n<pre><code>Formula: (salary / 2) * work_years</code></pre>\n\n</ol>"
+  },
+  {
+   "fieldname": "end_of_service_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "End Of Service Type",
+   "options": "With Reward\nWithout Reward"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "End Of Service",
+   "link_fieldname": "type"
+  }
+ ],
+ "modified": "2024-02-19 01:39:24.757885",
+ "modified_by": "Administrator",
+ "module": "endserviceapp",
+ "name": "End Of Service Setting",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

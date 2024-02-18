@@ -1,0 +1,173 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{employee}-{posting_date}",
+ "creation": "2024-02-18 13:36:00.955623",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "type",
+  "date_of_joining",
+  "work_period",
+  "waring",
+  "column_break_m3n6j",
+  "posting_date",
+  "contract_type",
+  "end_of_service_type",
+  "work_years",
+  "end_of_service_section",
+  "end_of_service_component",
+  "section_break_cspxo",
+  "salary",
+  "column_break_namdc",
+  "end_of_service_amount",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.date_of_joining",
+   "fieldname": "date_of_joining",
+   "fieldtype": "Date",
+   "label": "Date of Joining",
+   "read_only": 1
+  },
+  {
+   "fieldname": "work_years",
+   "fieldtype": "Float",
+   "label": "Work Period (Years)",
+   "non_negative": 1,
+   "precision": "3",
+   "read_only": 1
+  },
+  {
+   "fieldname": "work_period",
+   "fieldtype": "Data",
+   "label": "Work Period",
+   "read_only": 1
+  },
+  {
+   "fieldname": "contract_type",
+   "fieldtype": "Select",
+   "label": "Contract Type",
+   "options": "\nFixed term\nIndefinite",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_of_service_amount",
+   "fieldtype": "Currency",
+   "label": "End Of Service Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "End Of Service",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "end_of_service_section",
+   "fieldtype": "Section Break",
+   "label": "End Of Service",
+   "read_only": 1
+  },
+  {
+   "fieldname": "end_of_service_component",
+   "fieldtype": "Table",
+   "label": "End Of Service Component",
+   "options": "End Of Service Component",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_cspxo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_namdc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_m3n6j",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Link",
+   "label": "Type",
+   "options": "End Of Service Setting"
+  },
+  {
+   "fetch_from": "type.end_of_service_type",
+   "fieldname": "end_of_service_type",
+   "fieldtype": "Select",
+   "label": "End Of Service Type",
+   "options": "\nWith Reward\nWithout Reward",
+   "read_only": 1
+  },
+  {
+   "fieldname": "salary",
+   "fieldtype": "Currency",
+   "label": "Total  Component Amount",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "waring",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Waring",
+   "no_copy": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-02-19 01:53:24.417836",
+ "modified_by": "Administrator",
+ "module": "endserviceapp",
+ "name": "End Of Service",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
