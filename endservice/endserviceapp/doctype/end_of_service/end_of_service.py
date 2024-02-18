@@ -27,6 +27,7 @@ from datetime import date
 
 
 class EndOfService(Document):
+    
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.whitelisted_globals = {
@@ -39,7 +40,10 @@ class EndOfService(Document):
         }
 
     def validate(self):
+
         self.calc_work_period()
+        self.end_of_service_component=[]
+
         if self.end_of_service_type=="With Reward":
             setting_row= self.get_applicable_type()
             self.get_employee_component()
@@ -66,12 +70,17 @@ class EndOfService(Document):
         
         earnings_salary=self.add_earnings_component(salay_slip.earnings)
         deductions_salary=self.add_deductions_component(salay_slip.deductions)
+
+        if total_salary==0:
+            frappe.throw(_("Salary Component with <b>End Of Service Included</b>,not found"))
+
         total_salary+=earnings_salary
         total_salary-=deductions_salary
         self.salary=total_salary
     
         
     def add_earnings_component(self,earnings):
+      
         amount=0
         for component in earnings:
 
@@ -82,6 +91,7 @@ class EndOfService(Document):
                     "amount":component.amount
                 })
                 amount+=component.amount
+
         return 	amount	
     
     def add_deductions_component(self,deductions):
